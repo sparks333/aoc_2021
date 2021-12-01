@@ -1,4 +1,3 @@
-
 import numpy as np
 
 input = np.loadtxt('input.txt')
