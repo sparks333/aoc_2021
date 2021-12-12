@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectTarget>
+    <TargetProject>5f2b2901-a2af-42a8-9e1d-a008627af10d</TargetProject>
+    <FriendlyName>Day12</FriendlyName>
+  </ProjectTarget>
+  <UseVTune>false</UseVTune>
+</ProfilingTarget>
