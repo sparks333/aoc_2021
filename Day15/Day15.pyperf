@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ProfilingTarget xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ProjectTarget>
+    <TargetProject>7d6bd45a-d8e8-43e2-abef-3f465021ed54</TargetProject>
+    <FriendlyName>Day15</FriendlyName>
+  </ProjectTarget>
+  <Reports>
+    <Report>
+      <Filename>C:\Users\spark\AppData\Local\Temp\Day15_20211215.vsp</Filename>
+    </Report>
+    <Report>
+      <Filename>C:\Users\spark\AppData\Local\Temp\Day15_20211215.vsp</Filename>
+    </Report>
+  </Reports>
+  <UseVTune>false</UseVTune>
+</ProfilingTarget>
