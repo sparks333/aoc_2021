@@ -36,70 +36,60 @@ def shatter(cuboid, on, cuboid_list):
     z1 = cuboid[2][0]
     z2 = cuboid[2][1]
 
-    changed = len(cuboid_list) > 0
+    for i in cuboid_list:
 
-    while changed == True:
+        if i[0] == False:
+            continue
 
-        changed = False
+        x1_tmp = i[1][0][0]
+        x2_tmp = i[1][0][1]
+        y1_tmp = i[1][1][0]
+        y2_tmp = i[1][1][1]
+        z1_tmp = i[1][2][0]
+        z2_tmp = i[1][2][1]
 
-        for i in cuboid_list:
+        x1_intersect = max(x1, x1_tmp)
+        x2_intersect = min(x2, x2_tmp)
+        y1_intersect = max(y1, y1_tmp)
+        y2_intersect = min(y2, y2_tmp)
+        z1_intersect = max(z1, z1_tmp)
+        z2_intersect = min(z2, z2_tmp)
 
-            x1_tmp = i[0][0]
-            x2_tmp = i[0][1]
-            y1_tmp = i[1][0]
-            y2_tmp = i[1][1]
-            z1_tmp = i[2][0]
-            z2_tmp = i[2][1]
-
-            x1_intersect = max(x1, x1_tmp)
-            x2_intersect = min(x2, x2_tmp)
-            y1_intersect = max(y1, y1_tmp)
-            y2_intersect = min(y2, y2_tmp)
-            z1_intersect = max(z1, z1_tmp)
-            z2_intersect = min(z2, z2_tmp)
-
-            if x1_tmp >= x1 and x2_tmp <= x2 and y1_tmp >= y1 and y2_tmp <= y2 and z1_tmp >= z1 and z2_tmp <= z2:
-                cuboid_list.remove(i)
-                changed = True
-                break
-            if x1_intersect > x1_tmp and x1_intersect < x2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x1_intersect], [y1_tmp, y2_tmp], [z1_tmp, z2_tmp]])
-                cuboid_list.append([[x1_intersect, x2_tmp], [y1_tmp, y2_tmp], [z1_tmp, z2_tmp]])
-                changed = True
-                break
-            elif y1_intersect > y1_tmp and y1_intersect < y2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x2_tmp], [y1_tmp, y1_intersect], [z1_tmp, z2_tmp]])
-                cuboid_list.append([[x1_tmp, x2_tmp], [y1_intersect, y2_tmp], [z1_tmp, z2_tmp]])
-                changed = True
-                break
-            elif z1_intersect > z1_tmp and z1_intersect < z2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x2_tmp], [y1_tmp, y2_tmp], [z1_tmp, z1_intersect]])
-                cuboid_list.append([[x1_tmp, x2_tmp], [y1_tmp, y2_tmp], [z1_intersect, z2_tmp]])
-                changed = True
-                break
-            elif x2_intersect > x1_tmp and x2_intersect < x2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x2_intersect],[y1_tmp, y2_tmp], [z1_tmp, z2_tmp]])
-                cuboid_list.append([[x2_intersect, x2_tmp],[y1_tmp, y2_tmp], [z1_tmp, z2_tmp]])
-                changed = True
-                break
-            elif y2_intersect > y1_tmp and y2_intersect < y2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x2_tmp],[y1_tmp, y2_intersect], [z1_tmp, z2_tmp]])
-                cuboid_list.append([[x1_tmp, x2_tmp],[y2_intersect, y2_tmp], [z1_tmp, z2_tmp]])
-                changed = True
-                break
-            elif z2_intersect > z1_tmp and z2_intersect < z2_tmp:
-                cuboid_list.remove(i)
-                cuboid_list.append([[x1_tmp, x2_tmp],[y1_tmp, y2_tmp], [z1_tmp, z2_intersect]])
-                cuboid_list.append([[x1_tmp, x2_tmp],[y1_tmp, y2_tmp], [z2_intersect, z2_tmp]])
-                changed = True
-                break
+        if x1_tmp >= x1 and x2_tmp <= x2 and y1_tmp >= y1 and y2_tmp <= y2 and z1_tmp >= z1 and z2_tmp <= z2:
+            i[0] = False
+            continue
+        if x1_intersect > x1_tmp and x1_intersect < x2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x1_intersect], [y1_tmp, y2_tmp], [z1_tmp, z2_tmp]]])
+            cuboid_list.append([True, [[x1_intersect, x2_tmp], [y1_tmp, y2_tmp], [z1_tmp, z2_tmp]]])
+            continue
+        if y1_intersect > y1_tmp and y1_intersect < y2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x2_tmp], [y1_tmp, y1_intersect], [z1_tmp, z2_tmp]]])
+            cuboid_list.append([True, [[x1_tmp, x2_tmp], [y1_intersect, y2_tmp], [z1_tmp, z2_tmp]]])
+            continue
+        if z1_intersect > z1_tmp and z1_intersect < z2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x2_tmp], [y1_tmp, y2_tmp], [z1_tmp, z1_intersect]]])
+            cuboid_list.append([True, [[x1_tmp, x2_tmp], [y1_tmp, y2_tmp], [z1_intersect, z2_tmp]]])
+            continue
+        if x2_intersect > x1_tmp and x2_intersect < x2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x2_intersect],[y1_tmp, y2_tmp], [z1_tmp, z2_tmp]]])
+            cuboid_list.append([True, [[x2_intersect, x2_tmp],[y1_tmp, y2_tmp], [z1_tmp, z2_tmp]]])
+            continue
+        if y2_intersect > y1_tmp and y2_intersect < y2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x2_tmp],[y1_tmp, y2_intersect], [z1_tmp, z2_tmp]]])
+            cuboid_list.append([True, [[x1_tmp, x2_tmp],[y2_intersect, y2_tmp], [z1_tmp, z2_tmp]]])
+            continue
+        if z2_intersect > z1_tmp and z2_intersect < z2_tmp:
+            i[0] = False
+            cuboid_list.append([True, [[x1_tmp, x2_tmp],[y1_tmp, y2_tmp], [z1_tmp, z2_intersect]]])
+            cuboid_list.append([True, [[x1_tmp, x2_tmp],[y1_tmp, y2_tmp], [z2_intersect, z2_tmp]]])
+            continue
     if on:
-        cuboid_list.append(cuboid)
+        cuboid_list.append([True, cuboid])
 
 
 
@@ -131,9 +121,15 @@ with open('test.txt') as file:
         new_cuboid = [[x_start, x_stop], [y_start, y_stop], [z_start, z_stop]]
 
         shatter(new_cuboid, on, cuboids)
+
+        for i in cuboids:
+            if i[0] == False:
+                cuboids.remove(i)
+
         total_on = 0
         for i in cuboids:
-            total_on += (i[0][1]-i[0][0])*(i[1][1]-i[1][0])*(i[2][1]-i[2][0])
+            if i[0]:
+                total_on += (i[1][0][1]-i[1][0][0])*(i[1][1][1]-i[1][1][0])*(i[1][2][1]-i[1][2][0])
         print('Total On: ' + str(total_on))
 
 
