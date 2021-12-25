@@ -64,21 +64,6 @@ def check_num(model_num, program):
 
     return reg['z']
 
-#model_num[0] = random.randrange(1,10) #13
-#model_num[1] = random.randrange(1,10) #12
-#model_num[2] = 0 #11
-#model_num[3] = 9 #10
-#model_num[4] = 1 #9
-#model_num[5] = 0 #8
-#model_num[6] = random.randrange(9,10) #7
-#model_num[7] = model_num[6] - 6 #6
-#model_num[8] = random.randrange(1,7) #5
-#model_num[9] = model_num[8] + 3 #4
-#model_num[10] = 0 #3
-#model_num[11] = 0 #2
-#model_num[12] = random.randrange(1,8) #1
-#model_num[13] = model_num[12] + 2 #0
-
 A = [15, 11, 10, 12, -11, 11, 14, -6, 10, -6, -6, -16, -4, -2]
 B = [1, 1, 1, 1, 26, 1, 1, 26, 1, 26, 26, 26, 26, 26]
 C = [9, 1, 11, 3, 10, 5, 0, 7, 9, 15, 4, 10, 4, 9]
